@@ -13,8 +13,8 @@ spec:
         app: health-app
     spec:
       containers:
-      - name: health-app
-        image: health-app:latest
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 5000
+        - name: health-app
+          image: health-app:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
