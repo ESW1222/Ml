@@ -1,10 +1,15 @@
 import pickle
 import numpy as np
 
+# Load the trained regression model
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
-bmi = 30.0
-prediction = model.predict(np.array([[bmi]]))
-
-print(f"Predicted charges for BMI {bmi}: {prediction[0]:.2f}")
+def predict(data):
+    try:
+        bmi = float(data['bmi'])
+        input_array = np.array([[bmi]])  # Ensure 2D input
+        prediction = model.predict(input_array)
+        return round(float(prediction[0]), 2)  # Return prediction as float
+    except Exception as e:
+        return f"Error in prediction: {str(e)}"
